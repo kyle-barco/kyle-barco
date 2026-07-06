@@ -78,9 +78,16 @@ def main():
     t.delete_row(7, prompt_col)  # simulate syntax highlighting
     t.gen_text("\x1b[92mclear\x1b[0m", 7, count=3, contin=True)
 
+    import urllib.request, json
     ignore_repos = []
     git_user_details = gifos.utils.fetch_github_stats("kyle-barco", ignore_repos)
     user_age = gifos.utils.calc_age(4, 5, 2023)
+    streak_data = None
+    try:
+        with urllib.request.urlopen("https://streak-stats.demolab.com/api?user=kyle-barco") as r:
+            streak_data = json.loads(r.read().decode())
+    except Exception:
+        pass
     t.clear_frame()
     top_languages = [lang[0] for lang in git_user_details.languages_sorted]
     user_details_lines = f"""
@@ -105,6 +112,7 @@ def main():
     \x1b[96mTotal PRs: \x1b[93m{git_user_details.total_pull_requests_made}\x1b[0m
     \x1b[96mMerged PR %: \x1b[93m{git_user_details.pull_requests_merge_percentage}\x1b[0m
     \x1b[96mTotal Contributions: \x1b[93m{git_user_details.total_repo_contributions}\x1b[0m
+    \x1b[96mCurrent Streak: \x1b[93m{streak_data.get('streak', 'N/A') if streak_data else 'N/A'} days\x1b[0m
     \x1b[96mTop Languages: \x1b[93m{', '.join(top_languages[:5])}\x1b[0m
     """
     t.gen_text("\x1b[92mkyle-barco\x1b[0m\x1b[94m@\x1b[0m\x1b[93mKYLE_OS\x1b[0m \x1b[95m~\x1b[0m\x1b[93m>\x1b[0m ", 1, count=5)
@@ -115,7 +123,7 @@ def main():
     t.delete_row(1, prompt_col)
     t.gen_text("\x1b[92mneofetch\x1b[0m", 1, contin=True)
 
-    t.set_font(FONT_FILE_TRUETYPE, 12)
+    t.set_font(FONT_FILE_TRUETYPE, 8)
     t.toggle_show_cursor(False)
     crossLines = r"""
 
@@ -191,6 +199,10 @@ def main():
 
 </details> -->
 </div>
+
+<br/>
+
+[![GitHub Streak](https://streak-stats.demolab.com?user=kyle-barco&count_private=true&theme=nord&border_radius=10)](https://git.io/streak-stats)
 
 <!-- Image deletion URL: NONE -->"""
     with open("README.md", "w") as f:
