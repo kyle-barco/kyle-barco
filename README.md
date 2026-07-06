@@ -5,12 +5,16 @@
     <img alt="KYLEOS" src="output.gif">
 </picture>
 
-<sub><i>Generated automatically using [KYLE OS](https://github.com/kyle-barco/kyle-barco) on Mon Jul 06 10:20:39 AM PST 2026</i></sub>
+<sub><i>Generated automatically using [KYLE OS](https://github.com/kyle-barco/kyle-barco) on Mon Jul 06 10:31:58 AM PST 2026</i></sub>
 
 <!-- <details>
 <summary>More details</summary>
 
 </details> -->
 </div>
+
+<br/>
+
+[![GitHub Streak](https://streak-stats.demolab.com?user=kyle-barco&count_private=true&theme=nord&border_radius=10)](https://git.io/streak-stats)
 
 <!-- Image deletion URL: NONE -->
