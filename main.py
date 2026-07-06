@@ -134,7 +134,7 @@ def main():
     t.gen_text(user_details_lines, 2, 35, count=5, contin=True)
     t.gen_prompt(t.curr_row)
     t.gen_typing_text(
-        "\x1b[92m# Have a blessed day kind stranger :D Thanks for stopping by!  — For His Glory alone",
+        "\x1b[92m# Have a blessed day kind stranger :D Thanks for stopping by!  - For His Glory alone",
         t.curr_row,
         contin=True,
     )
